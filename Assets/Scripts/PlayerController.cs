@@ -5,69 +5,60 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
 
-    private bool can_jump = true;
-    private float jump_power = 500.0f;
-    private float walk_power = 200.0f;
-    private int jump_timer = 0;
-    private int jump_length = 10;
-    //private int rotate_speed = 5;
-    private float xRotation = 0f;
-    [SerializeField] private float mouseSensitivity = 100f;
-    [SerializeField] private float gravity = 120f;
-    [SerializeField] private float accelerationFactor = 0.35f;
-    [SerializeField] private float maxSpeed = 10f;
+    [SerializeField] private MovementSettings movementSettings = new MovementSettings();
+    [SerializeField] private JumpSettings jumpSettings = new JumpSettings();
+    [SerializeField] private MouseSettings mouseSettings = new MouseSettings();
+    private Timers timers = new Timers();
+    private InternalVars internalVars = new InternalVars();
     private Rigidbody body;
-
+    private Transform cameraTransform;
 
     private void cameraInput()
     {
         //GPT FPS camera code
-        float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.fixedDeltaTime;
-        float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.fixedDeltaTime;
-        xRotation -= mouseY;
-        xRotation = Mathf.Clamp(xRotation, -90f, 90f);
-        gameObject.transform.GetChild(0).transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
+        float mouseX = Input.GetAxis("Mouse X") * mouseSettings.mouseSensitivity * Time.fixedDeltaTime;
+        float mouseY = Input.GetAxis("Mouse Y") * mouseSettings.mouseSensitivity * Time.fixedDeltaTime;
+        internalVars.xRotation -= mouseY;
+        internalVars.xRotation = Mathf.Clamp(internalVars.xRotation, -90f, 90f);
+        gameObject.transform.GetChild(0).transform.localRotation = Quaternion.Euler(internalVars.xRotation, 0f, 0f);
         body.transform.Rotate(Vector3.up * mouseX);
     }
 
-    private void groundedOrGravity()
+    private void releasedJumpAndGravity()
     {
-        if (body.velocity.y ==0)
-        {
-            can_jump = true;
-            jump_timer = 0;
-        }
-        else if (jump_timer >= jump_length || (Input.GetButtonUp("Jump") && jump_timer >= (jump_length / 2)) || body.velocity.y < 0) can_jump = false;
-
-        if (!can_jump) body.AddForce(Vector3.down * gravity);
+        if (timers.jumpTimer >= jumpSettings.jumpLength || (Input.GetButtonUp("Jump") && timers.jumpTimer >= (jumpSettings.jumpLength / 2)) || body.velocity.y < 0) internalVars.canJump = false;
+        body.AddForce(Vector3.down * movementSettings.gravity);
     }
 
     private void xyMovementInput() {
 
-        if (Input.GetAxis("Horizontal") != 0 && body.velocity.magnitude < maxSpeed)
-        {
-            
-            
-            Vector3 targetVelocity = transform.right * walk_power * Input.GetAxis("Horizontal");
-            body.velocity = Vector3.Lerp(body.velocity, targetVelocity, Time.deltaTime * accelerationFactor);
-            
+        float moveHorizontal = Input.GetAxis("Horizontal");
+        float moveVertical = Input.GetAxis("Vertical");
+        Vector3 cameraForward = Vector3.ProjectOnPlane(cameraTransform.forward, Vector3.up).normalized;
+        Vector3 cameraRight = Vector3.ProjectOnPlane(cameraTransform.right, Vector3.up).normalized;
 
-        }
-        if (Input.GetAxis("Vertical") != 0 && body.velocity.magnitude < maxSpeed)
-        {
-            
-            Vector3 targetVelocity = transform.forward * walk_power * Input.GetAxis("Vertical");
-            body.velocity = Vector3.Lerp(body.velocity, targetVelocity, Time.deltaTime * accelerationFactor);
-            
-        }
+        Vector3 moveDirection = (cameraRight * moveHorizontal + cameraForward * moveVertical).normalized;
+
+        Vector3 targetVelocity = moveDirection * movementSettings.maxSpeed;
+        Vector3 currentVelocity = body.velocity;
+        Vector3 newVelocity = Vector3.Lerp(currentVelocity, targetVelocity, movementSettings.accelerationFactor);
+        body.velocity = new Vector3(newVelocity.x, currentVelocity.y, newVelocity.z); // Preserve vertical velocity
+        
+        if (internalVars.isGrounded) body.velocity = new Vector3(newVelocity.x * movementSettings.groundedTraction, currentVelocity.y, newVelocity.z * movementSettings.groundedTraction);
+        else body.velocity = new Vector3(newVelocity.x * movementSettings.aerialTraction, currentVelocity.y, newVelocity.z * movementSettings.aerialTraction);
+
+
+        //Debug.Log(moveHorizontal + " " + moveVertical);
+        //if (moveHorizontal == 0) body.velocity = new Vector3(0, body.velocity.y, body.velocity.z);
+        //if (moveVertical == 0) body.velocity = new Vector3(body.velocity.x, body.velocity.y, 0);
     }
 
     private void jumpInput()
     {
-        if (Input.GetButton("Jump") && can_jump)
+        if (Input.GetButton("Jump") && internalVars.canJump)
         {
-            jump_timer++;
-            body.AddForce(Vector3.up * jump_power);
+            timers.jumpTimer++;
+            body.AddForce(Vector3.up * jumpSettings.jumpPower);
         }
     }
 
@@ -81,6 +72,10 @@ public class PlayerController : MonoBehaviour
     {
         body = GetComponent<Rigidbody>();//grabbing reference to the rigidbody
         Cursor.lockState = CursorLockMode.Locked;//cursor lock
+        if (cameraTransform == null)
+        {
+            cameraTransform = Camera.main.transform;
+        }
     }
 
     // Update is called once per frame
@@ -89,11 +84,55 @@ public class PlayerController : MonoBehaviour
         cameraInput();
     }
 
+    bool isGrounded()
+    {
+        // Check if the character is grounded, e.g., using a Raycast
+        RaycastHit hit;
+        return Physics.Raycast(transform.position, Vector3.down, out hit, 2.1f);
+    }
+
     private void FixedUpdate()
     {
-        groundedOrGravity();
+        if(isGrounded()) { internalVars.isGrounded = true; internalVars.canJump = true; timers.jumpTimer = 0; }
+        else internalVars.isGrounded = false;
+        releasedJumpAndGravity();
         xyMovementInput();
         jumpInput();
         cancelAngularVelocity();
     }
+}
+
+[System.Serializable]
+public class MovementSettings
+{
+    public float accelerationFactor = 0.35f;
+    public float groundedTraction = 0.5f;
+    public float aerialTraction = 0.4f;
+    public float maxSpeed = 40f;
+    //public float walkPower = 20.0f;
+    public float gravity = 40f;
+}
+[System.Serializable]
+public class JumpSettings
+{
+    
+    public int jumpLength = 5;
+    public float jumpPower = 100.0f;
+    
+}
+[System.Serializable]
+public class MouseSettings
+{
+    public float mouseSensitivity = 100f;
+}
+public class InternalVars
+{
+    public bool canJump = true;
+    public bool isGrounded = true;
+    public float xRotation = 0f;
+}
+
+public class Timers
+{
+    public int jumpTimer = 0;
 }

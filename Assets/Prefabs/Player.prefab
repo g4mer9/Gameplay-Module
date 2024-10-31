@@ -9,10 +9,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6562843408710876815}
+  - component: {fileID: 2524158249643911678}
   - component: {fileID: 5121488953724289451}
   - component: {fileID: 5422165182941226159}
   - component: {fileID: 9077877693583203366}
-  - component: {fileID: 995607947586334589}
+  - component: {fileID: 3762481323031121939}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -36,6 +37,33 @@ Transform:
   - {fileID: 5469530486016321913}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!54 &2524158249643911678
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4246386443279157031}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 5
+  m_AngularDrag: 0.1
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 80
+  m_CollisionDetection: 0
 --- !u!33 &5121488953724289451
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -98,37 +126,40 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3511047ca41dde049975d393994a58d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mouseSensitivity: 100
-  gravity: 80
-  accelerationFactor: 0.35
-  maxSpeed: 10
---- !u!54 &995607947586334589
-Rigidbody:
+  movementSettings:
+    accelerationFactor: 0.35
+    groundedTraction: 0.5
+    aerialTraction: 0.4
+    maxSpeed: 40
+    gravity: 25
+  jumpSettings:
+    jumpLength: 7
+    jumpPower: 100
+  mouseSettings:
+    mouseSensitivity: 100
+--- !u!136 &3762481323031121939
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4246386443279157031}
-  serializedVersion: 4
-  m_Mass: 5
-  m_Drag: 4
-  m_AngularDrag: 1
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_Material: {fileID: 13400000, guid: a5c799eb1af97b54b86c81e3313827f4, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 80
-  m_CollisionDetection: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &7413796831975616806
 GameObject:
   m_ObjectHideFlags: 0

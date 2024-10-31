@@ -5,6 +5,18 @@
     {
       "AbsoluteMoniker": "D:0:0:{925DB1E8-3D5C-43AA-2416-D0D16213B769}|Assembly-CSharp.csproj|c:\\projects\\cmpm125\\gameplay-module\\assets\\scripts\\playercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{925DB1E8-3D5C-43AA-2416-D0D16213B769}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\playercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{925DB1E8-3D5C-43AA-2416-D0D16213B769}|Assembly-CSharp.csproj|c:\\projects\\cmpm125\\gameplay-module\\assets\\scripts\\scenemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{925DB1E8-3D5C-43AA-2416-D0D16213B769}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\scenemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{925DB1E8-3D5C-43AA-2416-D0D16213B769}|Assembly-CSharp.csproj|C:\\Projects\\CMPM125\\Gameplay-Module\\assets\\scripts\\menumanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{925DB1E8-3D5C-43AA-2416-D0D16213B769}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\menumanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{925DB1E8-3D5C-43AA-2416-D0D16213B769}|Assembly-CSharp.csproj|C:\\Projects\\CMPM125\\Gameplay-Module\\assets\\scripts\\uimanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{925DB1E8-3D5C-43AA-2416-D0D16213B769}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\uimanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -14,8 +26,47 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 3,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "SceneManager.cs",
+              "DocumentMoniker": "C:\\Projects\\CMPM125\\Gameplay-Module\\Assets\\Scripts\\SceneManager.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\SceneManager.cs",
+              "ToolTip": "C:\\Projects\\CMPM125\\Gameplay-Module\\Assets\\Scripts\\SceneManager.cs",
+              "RelativeToolTip": "Assets\\Scripts\\SceneManager.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-30T21:26:13Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "MenuManager.cs",
+              "DocumentMoniker": "C:\\Projects\\CMPM125\\Gameplay-Module\\Assets\\Scripts\\MenuManager.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\MenuManager.cs",
+              "ToolTip": "C:\\Projects\\CMPM125\\Gameplay-Module\\Assets\\Scripts\\MenuManager.cs",
+              "RelativeToolTip": "Assets\\Scripts\\MenuManager.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB0AAAAuAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-30T20:38:49.591Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "UIManager.cs",
+              "DocumentMoniker": "C:\\Projects\\CMPM125\\Gameplay-Module\\Assets\\Scripts\\UIManager.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\UIManager.cs",
+              "ToolTip": "C:\\Projects\\CMPM125\\Gameplay-Module\\Assets\\Scripts\\UIManager.cs",
+              "RelativeToolTip": "Assets\\Scripts\\UIManager.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-30T20:29:12.419Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
@@ -24,7 +75,7 @@
               "RelativeDocumentMoniker": "Assets\\Scripts\\PlayerController.cs",
               "ToolTip": "C:\\Projects\\CMPM125\\Gameplay-Module\\Assets\\Scripts\\PlayerController.cs",
               "RelativeToolTip": "Assets\\Scripts\\PlayerController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAGMAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAGIAAAAAAAAAAAAywHUAAAAEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-30T01:34:38.015Z",
               "EditorCaption": ""

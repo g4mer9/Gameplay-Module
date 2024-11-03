@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private MovementSettings movementSettings = new MovementSettings();
     [SerializeField] private JumpSettings jumpSettings = new JumpSettings();
     [SerializeField] private MouseSettings mouseSettings = new MouseSettings();
+    [SerializeField] public UIInfo uiInfo = new UIInfo();
     private Timers timers = new Timers();
     private InternalVars internalVars = new InternalVars();
     private Rigidbody body;
@@ -119,6 +120,12 @@ public class JumpSettings
     public int jumpLength = 5;
     public float jumpPower = 100.0f;
     
+}
+[System.Serializable]
+public class UIInfo
+{
+    public int ammo = 10;
+    public float health = 100;
 }
 [System.Serializable]
 public class MouseSettings

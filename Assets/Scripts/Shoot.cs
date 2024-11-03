@@ -33,6 +33,7 @@ public class Shoot : MonoBehaviour
         {
             if (Input.GetButtonDown("Fire1") && Time.time > nextFire)
             {
+                //uiinfo.ammo--;
                 nextFire = Time.time + fireRate;
                 ShootGun();
             }

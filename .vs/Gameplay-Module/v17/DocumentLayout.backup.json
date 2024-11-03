@@ -3,8 +3,24 @@
   "WorkspaceRootPath": "C:\\Projects\\CMPM125\\Gameplay-Module\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|c:\\projects\\cmpm125\\gameplay-module\\assets\\shoot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:assets\\shoot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{925DB1E8-3D5C-43AA-2416-D0D16213B769}|Assembly-CSharp.csproj|c:\\projects\\cmpm125\\gameplay-module\\assets\\scripts\\scenemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{925DB1E8-3D5C-43AA-2416-D0D16213B769}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\scenemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{925DB1E8-3D5C-43AA-2416-D0D16213B769}|Assembly-CSharp.csproj|c:\\projects\\cmpm125\\gameplay-module\\assets\\scripts\\uimanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{925DB1E8-3D5C-43AA-2416-D0D16213B769}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\uimanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{925DB1E8-3D5C-43AA-2416-D0D16213B769}|Assembly-CSharp.csproj|c:\\projects\\cmpm125\\gameplay-module\\assets\\scripts\\menumanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{925DB1E8-3D5C-43AA-2416-D0D16213B769}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\menumanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{925DB1E8-3D5C-43AA-2416-D0D16213B769}|Assembly-CSharp.csproj|c:\\projects\\cmpm125\\gameplay-module\\assets\\scripts\\shoot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{925DB1E8-3D5C-43AA-2416-D0D16213B769}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\shoot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Projects\\CMPM125\\Gameplay-Module\\Assets\\Shoot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Shoot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -19,15 +35,65 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "SceneManager.cs",
+              "DocumentMoniker": "C:\\Projects\\CMPM125\\Gameplay-Module\\Assets\\Scripts\\SceneManager.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\SceneManager.cs",
+              "ToolTip": "C:\\Projects\\CMPM125\\Gameplay-Module\\Assets\\Scripts\\SceneManager.cs",
+              "RelativeToolTip": "Assets\\Scripts\\SceneManager.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-03T00:12:00.67Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "UIManager.cs",
+              "DocumentMoniker": "C:\\Projects\\CMPM125\\Gameplay-Module\\Assets\\Scripts\\UIManager.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\UIManager.cs",
+              "ToolTip": "C:\\Projects\\CMPM125\\Gameplay-Module\\Assets\\Scripts\\UIManager.cs",
+              "RelativeToolTip": "Assets\\Scripts\\UIManager.cs",
+              "ViewState": "AgIAADUAAAAAAAAAAAA1wHAAAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-03T00:10:12.43Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "MenuManager.cs",
+              "DocumentMoniker": "C:\\Projects\\CMPM125\\Gameplay-Module\\Assets\\Scripts\\MenuManager.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\MenuManager.cs",
+              "ToolTip": "C:\\Projects\\CMPM125\\Gameplay-Module\\Assets\\Scripts\\MenuManager.cs",
+              "RelativeToolTip": "Assets\\Scripts\\MenuManager.cs",
+              "ViewState": "AgIAADoAAAAAAAAAAAAIwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-03T00:09:44.724Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Shoot.cs",
+              "DocumentMoniker": "C:\\Projects\\CMPM125\\Gameplay-Module\\Assets\\Scripts\\Shoot.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Shoot.cs",
+              "ToolTip": "C:\\Projects\\CMPM125\\Gameplay-Module\\Assets\\Scripts\\Shoot.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Shoot.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-02T23:47:49.767Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "Shoot.cs",
               "DocumentMoniker": "C:\\Projects\\CMPM125\\Gameplay-Module\\Assets\\Shoot.cs",
               "RelativeDocumentMoniker": "Assets\\Shoot.cs",
               "ToolTip": "C:\\Projects\\CMPM125\\Gameplay-Module\\Assets\\Shoot.cs",
               "RelativeToolTip": "Assets\\Shoot.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-02T23:47:31.062Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-02T23:47:31.062Z"
             }
           ]
         }

@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 //code adapted from https://pastebin.com/jZ6hzMcJ
 public enum GameMenu
 {
@@ -17,9 +19,13 @@ public class UIManager : MonoBehaviour
     private GameObject[] Menus;
     public GameMenu startingMenu;
     public GameMenu currentMenu;
+    public Slider health;
+    public TMP_Text ammo;
+    public GameObject player;
     //public KeyCode nextKey;
     //public KeyCode[] menuKeys;
     private static UIManager _instance;
+    private UIInfo ui_instance;
 
     public static UIManager Instance
     {
@@ -44,6 +50,7 @@ public class UIManager : MonoBehaviour
 
     void Start()
     {
+        ui_instance = player.GetComponent<PlayerController>().uiInfo;
         foreach (GameObject menu in Menus)
         {
             if (menu.GetComponent<MenuManager>() == null)
@@ -53,15 +60,22 @@ public class UIManager : MonoBehaviour
         OpenMenu(startingMenu); //open a starting menu if one is declared
     }
 
-    //// Update is called once per frame
-    //void Update()
-    //{
-    //    CheckMenuInput();
-    //}
+    // Update is called once per frame
+    void Update()
+    {
+        if (health != null)
+        {
+            health.value = ui_instance.health;
+        }
+        if (ammo != null)
+        {
+            ammo.text = ui_instance.ammo.ToString();
+        }
+    }
 
     //public void CheckMenuInput()
     //{
-        
+
     //}
 
     private bool CloseMenu(GameMenu Menu)

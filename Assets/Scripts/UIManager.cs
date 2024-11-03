@@ -4,11 +4,11 @@ using UnityEngine;
 //code adapted from https://pastebin.com/jZ6hzMcJ
 public enum GameMenu
 {
-    None,
+    HUD,
     Main,
     Options,
     Credits,
-    
+    Pause
 }
 
 public class UIManager : MonoBehaviour
@@ -91,6 +91,9 @@ public class UIManager : MonoBehaviour
                 break;
             case "Credits":
                 GoToMenu(GameMenu.Credits);
+                break;
+            case "Pause":
+                GoToMenu(GameMenu.Pause);
                 break;
             default:
                 Debug.LogWarning("Invalid menu: " + menu);

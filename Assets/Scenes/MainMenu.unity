@@ -2572,7 +2572,12 @@ MonoBehaviour:
   m_text: 'UI manager code: https://pastebin.com/jZ6hzMcJ
 
     MenuManager code:
-    https://pastebin.com/JPguqDmy'
+    https://pastebin.com/JPguqDmy
+
+    Pistol Sound Effect: Half Life 2 Pistol Sound
+    Effect
+
+    Pistol Model: https://sketchfab.com/3d-models/g17--black-0e5186fbbd3f47008e9341ab71d67917'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

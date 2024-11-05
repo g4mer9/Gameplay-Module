@@ -191,7 +191,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8dc55e40d0f81541b4b54b4b59924ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyType: Jobber
+  enemyType: Brute
   maxHealth: 0
   currentHealth: 0
 --- !u!195 &6596904203132085037
@@ -267,5 +267,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61dfa846e370da14cb0aa625c33a3949, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthPack: {fileID: 0}
-  ammoPack: {fileID: 0}
+  healthPack: {fileID: 7994686924951310211, guid: a8a2302180086c2438b8b01e445869cb, type: 3}
+  ammoPack: {fileID: 2025003780619207303, guid: b92397fb6a2df924ab9586a9f5f044e0, type: 3}

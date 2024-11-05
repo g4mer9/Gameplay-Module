@@ -11,6 +11,7 @@ public class AmmoPack : MonoBehaviour
     void Start()
     {
         //player = GameObject.Find("Player");
+        player = GameObject.FindGameObjectWithTag("Player");
         ui_instance = player.GetComponent<PlayerController>().uiInfo;
     }
 

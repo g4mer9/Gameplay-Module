@@ -28,7 +28,7 @@ public class EnemyDamage : MonoBehaviour
     public void Damage(int damageAmount)
     {
         currentHealth -= damageAmount;
-        if (currentHealth <= 0)
+        if (currentHealth == 0)
         {
             loot.SpawnRandomItem();
             gameObject.SetActive(false);

@@ -32,8 +32,8 @@ public class PlayerController : MonoBehaviour
 
     private void releasedJumpAndGravity()
     {
-        if (timers.jumpTimer >= jumpSettings.jumpLength || (Input.GetButtonUp("Jump") && timers.jumpTimer >= (jumpSettings.jumpLength / 2)) || body.velocity.y < 0) internalVars.canJump = false;
-        body.AddForce(Vector3.down * movementSettings.gravity);
+        if (timers.jumpTimer >= jumpSettings.jumpLength || body.velocity.y < 0) internalVars.canJump = false;
+        body.AddForce(Vector3.down * movementSettings.gravity * 2);
     }
 
     private void xyMovementInput() {
@@ -45,7 +45,9 @@ public class PlayerController : MonoBehaviour
 
         Vector3 moveDirection = (cameraRight * moveHorizontal + cameraForward * moveVertical).normalized;
 
-        Vector3 targetVelocity = moveDirection * movementSettings.maxSpeed;
+        Vector3 targetVelocity;
+        if(Input.GetButton("Sprint")) targetVelocity = moveDirection * (movementSettings.maxSpeed * 1.5f);
+        else targetVelocity = moveDirection * movementSettings.maxSpeed;
         Vector3 currentVelocity = body.velocity;
         Vector3 newVelocity = Vector3.Lerp(currentVelocity, targetVelocity, movementSettings.accelerationFactor);
         body.velocity = new Vector3(newVelocity.x, currentVelocity.y, newVelocity.z); // Preserve vertical velocity
@@ -61,10 +63,15 @@ public class PlayerController : MonoBehaviour
 
     private void jumpInput()
     {
-        if (Input.GetButton("Jump") && internalVars.canJump)
+        if ((Input.GetButton("Jump") && internalVars.canJump) || (timers.jumpTimer > 0 && timers.jumpTimer <= (jumpSettings.jumpLength / 2)))
         {
+            if(Input.GetButtonDown("Jump")|| internalVars.isGrounded) body.AddForce(Vector3.up * jumpSettings.jumpPower * 5);
+            else
+            {
+                body.AddForce(Vector3.up * jumpSettings.jumpPower);
+            }
             timers.jumpTimer++;
-            body.AddForce(Vector3.up * jumpSettings.jumpPower);
+            
         }
     }
 
@@ -95,7 +102,7 @@ public class PlayerController : MonoBehaviour
     {
         // Check if the character is grounded, e.g., using a Raycast
         RaycastHit hit;
-        return Physics.Raycast(transform.position, Vector3.down, out hit, 2.1f);
+        return Physics.Raycast(transform.position, Vector3.down, out hit, 2.2f);
     }
 
     private void FixedUpdate()
@@ -114,17 +121,17 @@ public class MovementSettings
 {
     public float accelerationFactor = 0.35f;
     public float groundedTraction = 0.5f;
-    public float aerialTraction = 0.4f;
+    public float aerialTraction = 0.35f;
     public float maxSpeed = 40f;
     //public float walkPower = 20.0f;
-    public float gravity = 40f;
+    public float gravity = 200f;
 }
 [System.Serializable]
 public class JumpSettings
 {
     
     public int jumpLength = 5;
-    public float jumpPower = 100.0f;
+    public float jumpPower = 200.0f;
     
 }
 [System.Serializable]

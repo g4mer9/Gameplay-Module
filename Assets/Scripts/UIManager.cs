@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.LowLevel;
 using UnityEngine.UI;
 //code adapted from https://pastebin.com/jZ6hzMcJ
 public enum GameMenu
@@ -10,7 +11,7 @@ public enum GameMenu
     Main,
     Options,
     Credits,
-    Pause
+    GameOver
 }
 
 public class UIManager : MonoBehaviour
@@ -26,6 +27,8 @@ public class UIManager : MonoBehaviour
     //public KeyCode[] menuKeys;
     private static UIManager _instance;
     private UIInfo ui_instance;
+    private Camera cam;
+    private SceneManager sceneManager;
 
     public static UIManager Instance
     {
@@ -50,7 +53,12 @@ public class UIManager : MonoBehaviour
 
     void Start()
     {
-        ui_instance = player.GetComponent<PlayerController>().uiInfo;
+        if(player != null) ui_instance = player.GetComponent<PlayerController>().uiInfo;
+        sceneManager = GetComponentInChildren<SceneManager>();
+        if (cam == null)
+        {
+            cam = Camera.main;
+        }
         foreach (GameObject menu in Menus)
         {
             if (menu.GetComponent<MenuManager>() == null)
@@ -63,11 +71,17 @@ public class UIManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (health != null)
+        if (health != null && player != null)
         {
             health.value = ui_instance.health;
+            if(ui_instance.health <= 0)
+            {
+                sceneManager.LoadSceneAsync("MainMenu");
+                Cursor.lockState = CursorLockMode.None;
+
+            }
         }
-        if (ammo != null)
+        if (ammo != null && player != null)
         {
             ammo.text = ui_instance.ammo.ToString();
         }
@@ -105,9 +119,6 @@ public class UIManager : MonoBehaviour
                 break;
             case "Credits":
                 GoToMenu(GameMenu.Credits);
-                break;
-            case "Pause":
-                GoToMenu(GameMenu.Pause);
                 break;
             default:
                 Debug.LogWarning("Invalid menu: " + menu);

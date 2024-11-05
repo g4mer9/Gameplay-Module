@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Shoot : MonoBehaviour
@@ -14,12 +15,15 @@ public class Shoot : MonoBehaviour
     private GameObject player;
     private float nextFire;
     private Light bulletLight;
+    private UIInfo ui_instance;
     private WaitForSecondsRealtime lightDuration = new WaitForSecondsRealtime(.2f);
+    
 
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.FindWithTag("Player");
+        ui_instance = player.GetComponent<PlayerController>().uiInfo;
         gunAudio = GetComponentInChildren<AudioSource>();
         fpsCam = GetComponentInChildren<Camera>();
         bulletLight = GetComponentInChildren<Light>();
@@ -31,9 +35,9 @@ public class Shoot : MonoBehaviour
     {
         if (Time.timeScale != 0f)
         {
-            if (Input.GetButtonDown("Fire1") && Time.time > nextFire)
+            if (Input.GetButtonDown("Fire1") && Time.time > nextFire && ui_instance.ammo > 0)
             {
-                //uiinfo.ammo--;
+                ui_instance.ammo--;
                 nextFire = Time.time + fireRate;
                 ShootGun();
             }
@@ -43,15 +47,25 @@ public class Shoot : MonoBehaviour
     void ShootGun()
     {
         StartCoroutine(ShotEffect());
-        RaycastHit hit;
-        if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, gunRange))
+        //RaycastHit hit;
+
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit[] hits = Physics.RaycastAll(ray, gunRange);
+
+        foreach (RaycastHit hit in hits)
         {
-            Debug.Log(hit.transform.name);
-            if (hit.transform.tag == "Enemy")
+            // Check if the hit object has a Renderer component
+            if (hit.collider.gameObject.GetComponent<Renderer>() != null && hit.transform.tag == "Enemy")
             {
-                //hit.transform.GetComponent<Enemy>().TakeDamage(gunDamage);
-                //enemy takes damage
-                throw new NotImplementedException();
+                Debug.Log(hit.transform.name);
+                EnemyDamage enemyDamage = hit.collider.GetComponent<EnemyDamage>();
+
+                if (enemyDamage != null)
+                {
+                    // Call the Damage() method if the component exists
+                    enemyDamage.Damage(1);
+                    Debug.Log("Enemy Hit");
+                }
             }
         }
     }

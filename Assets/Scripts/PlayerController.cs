@@ -21,8 +21,13 @@ public class PlayerController : MonoBehaviour
         float mouseY = Input.GetAxis("Mouse Y") * mouseSettings.mouseSensitivity * Time.fixedDeltaTime;
         internalVars.xRotation -= mouseY;
         internalVars.xRotation = Mathf.Clamp(internalVars.xRotation, -90f, 90f);
-        gameObject.transform.GetChild(0).transform.localRotation = Quaternion.Euler(internalVars.xRotation, 0f, 0f);
-        body.transform.Rotate(Vector3.up * mouseX);
+
+        internalVars.yRotation += mouseX;
+        //internalVars.yRotation = Mathf.Clamp(0f, internalVars.yRotation, 90f);
+
+        //gameObject.transform.GetChild(0).transform.localRotation = Quaternion.Euler(internalVars.xRotation, 0f, 0f);
+        cameraTransform.localRotation = Quaternion.Euler(internalVars.xRotation, internalVars.yRotation, 0f);
+        //cameraTransform.Rotate(Vector3.up * mouseX);
     }
 
     private void releasedJumpAndGravity()
@@ -71,6 +76,7 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Camera.main.GetComponent<AudioListener>().enabled = true;
         body = GetComponent<Rigidbody>();//grabbing reference to the rigidbody
         Cursor.lockState = CursorLockMode.Locked;//cursor lock
         if (cameraTransform == null)
@@ -137,6 +143,7 @@ public class InternalVars
     public bool canJump = true;
     public bool isGrounded = true;
     public float xRotation = 0f;
+    public float yRotation = 0f;
 }
 
 public class Timers
